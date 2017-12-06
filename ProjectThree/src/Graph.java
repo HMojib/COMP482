@@ -13,7 +13,7 @@ public class Graph
 {
 
     //------------------------------------------------------
-    private ArrayList<EdgeNode>  adjList;
+    private ArrayList<EdgeNode>[]  adjList;
     private int nVertices;
     private int nEdges;
     private String fileName;
@@ -21,32 +21,49 @@ public class Graph
     /******************  Constructor**********************/
     public Graph ( String inputFileName){
         this.fileName = inputFileName;
+        createAdjList();
     }
 
     /******************Print graph method***************/
 
     public void printGraph()
-    {  }
+    {
+        System.out.println("Graph: nVertices = " + nVertices + " nEdges = " + nEdges);
+        System.out.println("Adjacency Lists");
+        for(int i = 0; i < nVertices; i++){
+            System.out.print("v = " + i + "  [");
+            int fancyCounter = 0;
+            for(int k = 0; k < adjList[i].size(); k++){
+                System.out.print(adjList[i].get(k).toString());
+                fancyCounter++;
+                if(fancyCounter == adjList[i].size()){
+                    System.out.print(" ]\n");
+                }else{
+                    System.out.print(", ");
+                }
+            }
+        }
+    }
 
     /******************* BFS Shortest paths  ******************/
-    public SPPacket   bfsShortestPaths ( int start)
+    //public SPPacket   bfsShortestPaths ( int start)
     {  }
 
     /********************Dijkstra's Shortest Path Algorithm*** */
 
-    public SPPacket  dijkstraShortestPaths (int start )
+  //  public SPPacket  dijkstraShortestPaths (int start )
     { }
 
     /********************Bellman Ford Shortest Paths ***************/
-    public SPPacket bellmanFordShortestPaths(int start)
+    //public SPPacket bellmanFordShortestPaths(int start)
     {}
 
     /***********************Prints shortest paths*************************/
-    public void printShortestPaths( SPPacket spp)
+  //  public void printShortestPaths( SPPacket spp)
     {}
 
     /*****************isStronglyConnected***************************/
-    public boolean isStronglyConnected()
+//    public boolean isStronglyConnected()
     {}
 
     private void createAdjList(){
@@ -57,6 +74,10 @@ public class Graph
                 this.nVertices = scanner.nextInt();
             }
 
+            adjList = (ArrayList<EdgeNode>[]) new ArrayList[nVertices];
+            for(int i =0; i < adjList.length; i++){
+                adjList[i] = new ArrayList();
+            }
             int runCounter = 1;
             int edgeCounter = 0;
             int tempVertexOne = 0;
@@ -73,12 +94,14 @@ public class Graph
                     tempVertexTwo = scanner.nextInt();
                     runCounter++;
                 }else{
-                    EdgeNode tempEdgeNode = new EdgeNode(tempVertexOne, tempVertexTwo, tempWeight);
                     tempWeight = scanner.nextInt();
                     runCounter = runCounter/3;
-                    adjList.add(tempEdgeNode); //FIX
+                    EdgeNode tempEdgeNode = new EdgeNode(tempVertexOne, tempVertexTwo, tempWeight);
+                    adjList[tempVertexOne].add(tempEdgeNode);
                 }
             }
+
+            nEdges = edgeCounter/3;
 
         } catch(Exception e){
             e.printStackTrace();
@@ -114,15 +137,14 @@ class EdgeNode
     }
 
 
-}
-
-
 
     public String toString(){
-
+        String returnStatement = "(" + vertex1 + ", " + vertex2 + ", " + weight + ")";
+        return returnStatement;
     }
 }
 /***********************************************/
+/*
 class SPPacket
 {
     int[] d;    //distance array
@@ -130,7 +152,11 @@ class SPPacket
     int source; //source vertex
 
     public SPPacket( int start, int[] dist, int[] pp)
-    {}
+    {
+        this.d.equals(dist);
+        this.parent.equals(pp);
+        this.source = start;
+    }
 
     public int[] getDistance()
     {}
@@ -145,3 +171,4 @@ class SPPacket
     { }
 
 }
+*/
