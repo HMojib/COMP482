@@ -13,7 +13,7 @@ public class GraphDriverTestcaseD{
       Graph g1 = new Graph("inputD.txt");
       g1.printGraph();
       int start = 0;
-      /*
+
       SPPacket spp = g1.bellmanFordShortestPaths(start);
       if( spp != null)
       {
@@ -23,10 +23,10 @@ public class GraphDriverTestcaseD{
       else
          System.out.println("\nGraph has a negative cycle");
       
-       if( g1.isStronglyConnected())
+      if( g1.isStronglyConnected())
         System.out.println( "\nGraph is strongly connected");
       else
          System.out.println( "\nGraph is not strongly connected");
- */
+
    }  //end main
 }

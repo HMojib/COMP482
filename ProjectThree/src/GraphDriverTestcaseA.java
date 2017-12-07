@@ -14,7 +14,7 @@ public class GraphDriverTestcaseA {
       g1.printGraph();
       int start = 1;
       
-     /* SPPacket spp = g1.dijkstraShortestPaths(start);
+      SPPacket spp = g1.dijkstraShortestPaths(start);
       System.out.println("\nPrint shortest paths from start vertex  = " + start);
       g1.printShortestPaths( spp );
       
@@ -24,6 +24,6 @@ public class GraphDriverTestcaseA {
       else
          System.out.println( "\nGraph is not strongly connected");
       
-   */
+
    }  //end main
 }

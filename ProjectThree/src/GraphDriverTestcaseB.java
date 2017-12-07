@@ -11,7 +11,7 @@ public class GraphDriverTestcaseB{
       Graph g1 = new Graph("inputB.txt");
       g1.printGraph();
       int start = 0;
-      /*
+
       SPPacket spp = g1.bellmanFordShortestPaths(start);
       if( spp != null)
       {
@@ -20,6 +20,6 @@ public class GraphDriverTestcaseB{
       }
       else
          System.out.println("Graph has a negative cycle");
-        */
+
    }  //end main
 }
